@@ -4,15 +4,13 @@ pipeline {
       label 'agent01'
     }
 
-    stages {
-        stage("checkout") {
+    stages {   
+        stage("test"){
             steps {
-                sh "ls"
-                git branch:'main', url: 'https://github.com/g0t4/course3-jenkins-gs-spring-petclinic'
-                sh "ls"
+                sh "./mvnw test"                
             }
-        }
-		stage("build"){
+        }    
+        stage("build"){
             steps {
                 sh "./mvnw package"                
             }
